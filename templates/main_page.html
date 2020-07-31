@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>Demons Fuser</title>
+    </head>
+    <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    </style>
+
+    <body>
+
+        <div>
+            Input your demons
+        </div>
+
+        <div>
+            <form action="." method="POST">
+            <div class="form-group">
+                    <label for="demon1">Demon 1</label>
+                    <input class="form-control" id="demon1" name="demon1" placeholder="Demon 1">
+                  </div>
+                  <div class="form-group">
+                    <label for="demon2">Demon 2</label>
+                    <input class="form-control" id="demon2" name="demon2" placeholder="Demon 2">
+                  </div>
+                  <button type="submit" class="btn btn-success">Fuse</button>
+            </form>
+        </div>
+        <table>
+          <thead>
+                <tr>            
+                    <th><span>name      </span></th>
+                    <th><span>arcana    </span></th>
+                    <th><span>level     </span></th>
+                    <th><span>strenght  </span></th>
+                    <th><span>magic     </span></th>
+                    <th><span>endurance </span></th>
+                    <th><span>agility   </span></th>
+                    <th><span>luck      </span></th>
+                    <th><span>physical  </span></th>
+                    <th><span>gun       </span></th>
+                    <th><span>fire      </span></th>
+                    <th><span>ice       </span></th>
+                    <th><span>electric  </span></th>
+                    <th><span>wind      </span></th>
+                    <th><span>psychic   </span></th>
+                    <th><span>nuclear   </span></th>
+                    <th><span>bless     </span></th>
+                    <th><span>curse     </span></th>
+                    <th><span>skill_1   </span></th>
+                    <th><span>level_1   </span></th>
+                    <th><span>skill_2   </span></th>
+                    <th><span>level_2   </span></th>
+                    <th><span>skill_3   </span></th>
+                    <th><span>level_3   </span></th>
+                    <th><span>skill_4   </span></th>
+                    <th><span>level_4   </span></th>
+                    <th><span>skill_5   </span></th>
+                    <th><span>level_5   </span></th>
+                    <th><span>skill_6   </span></th>
+                    <th><span>level_6   </span></th>
+                    <th><span>skill_7   </span></th>
+                    <th><span>level_7   </span></th>
+                    <th><span>skill_8   </span></th>
+                    <th><span>level_8   </span></th>
+                </tr>
+          </thead>
+          <tbody>
+                {% for row in results %}
+                <tr>
+                    {% for col in row %}
+                      <td>
+                       <span>{{col}}</span>
+                      </td>
+                      {% endfor %}
+                    </tr>
+                {% endfor %}
+           </tbody>
+        </table>
+    </body>
+</html>
