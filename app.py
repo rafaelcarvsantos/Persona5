@@ -5,8 +5,7 @@ from flask import Flask, redirect, render_template, request, url_for
 
 import fusion
 
-for row in fusion.simpleFusion('Pixie','Mandrake'):
-	print(row)
+
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
@@ -18,8 +17,7 @@ results = []
 def index():
     if request.method == "GET":
         return render_template("main_page.html", results=results)
-    for row in fusion.simpleFusion(request.form["demon1"],request.form["demon2"]):
+    for row in fusion.multipleFusion(request.form["demon1"],request.form["demon2"],request.form["demon3"],request.form["demon4"]):
     	results.append(row)
-    
     return redirect(url_for('index'))
 app.run()
