@@ -1,6 +1,20 @@
 <html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+
+
     <head>
-        <title>Demons Fuser</title>
+        <title>Demon Fuser</title>
+
+      <script src='static/autocomplete.js'></script>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      
     </head>
     <style>
     table, th, td {
@@ -9,76 +23,108 @@
     }
     </style>
 
-    <script type="text/javascript" src="{{ url_for('static', filename = 'autocomplete.js') }}"></script>
+
 
     <body>
 
-        <div>
-            Input your demons
-        </div>
 
+        
+      <div  class="container-fluid">
+        <div>
+            <h1>Input your demons</h1>
+        </div>
         <div>
             <form action="." method="GET" autocomplete="off">
             {% for i in range(boxes) %}
-            <div class="form-group">
-                    <label for="demon">Demon {{i}}</label>
-                    <input class="form-control" id="autocomplete" name="demon{{i}}">
+            <div class ="row">
+              <div class ="col-sm-4">
+                <div class="form-group" >
+                        <label for="demon">Demon {{3*i+1}}</label>
+                        <input class="form-control demon" id="demonName" name="demon{{3*i+1}}">
+                </div>
+              </div>
+
+              <div class ="col-sm-4">
+                <div class="form-group" >
+                        <label for="demon">Demon {{3*i+2}}</label>
+                        <input class="form-control demon" id="demonName" name="demon{{3*i+2}}">
+                </div>
+              </div>
+
+               <div class ="col-sm-4">
+                <div class="form-group" >
+                        <label for="demon">Demon {{3*i+3}}</label>
+                        <input class="form-control demon" id="demonName" name="demon{{3*i+3}}">
+                </div>
+              </div>
             </div>
             {% endfor %}
                   <button type="submit" class="btn btn-success">Fuse</button>
             </form>
         </div>
-        <table>
+
+        <table id="myTable" class="table table-striped table-bordered table-sm  w-auto small" cellspacing="0" width="100%" >
+         
           <thead>
                 <tr>            
-                    <th><span>source      </span></th>
-                    <th><span>name    </span></th>
-                    <th><span>arcana    </span></th>
-                    <th><span>level     </span></th>
-                    <th><span>strenght  </span></th>
-                    <th><span>magic     </span></th>
-                    <th><span>endurance </span></th>
-                    <th><span>agility   </span></th>
-                    <th><span>luck      </span></th>
-                    <th><span>physical  </span></th>
-                    <th><span>gun       </span></th>
-                    <th><span>fire      </span></th>
-                    <th><span>ice       </span></th>
-                    <th><span>electric  </span></th>
-                    <th><span>wind      </span></th>
-                    <th><span>psychic   </span></th>
-                    <th><span>nuclear   </span></th>
-                    <th><span>bless     </span></th>
-                    <th><span>curse     </span></th>
-                    <th><span>skill_1   </span></th>
-                    <th><span>level_1   </span></th>
-                    <th><span>skill_2   </span></th>
-                    <th><span>level_2   </span></th>
-                    <th><span>skill_3   </span></th>
-                    <th><span>level_3   </span></th>
-                    <th><span>skill_4   </span></th>
-                    <th><span>level_4   </span></th>
-                    <th><span>skill_5   </span></th>
-                    <th><span>level_5   </span></th>
-                    <th><span>skill_6   </span></th>
-                    <th><span>level_6   </span></th>
-                    <th><span>skill_7   </span></th>
-                    <th><span>level_7   </span></th>
-                    <th><span>skill_8   </span></th>
-                    <th><span>level_8   </span></th>
+                    <th ><span>Source      </span></th>
+                    <th><span>Name    </span></th>
+                    <th><span>Arcana    </span></th>
+                    <th><span>Lvl     </span></th>
+                    <th><span>Str  </span></th>
+                    <th><span>Mag     </span></th>
+                    <th><span>End </span></th>
+                    <th><span>Agi   </span></th>
+                    <th><span>Luck      </span></th>
+                    <th><span>Phys  </span></th>
+                    <th><span>Gun       </span></th>
+                    <th><span>Fire      </span></th>
+                    <th><span>Ice       </span></th>
+                    <th><span>Elec  </span></th>
+                    <th><span>Wind      </span></th>
+                    <th><span>Psych   </span></th>
+                    <th><span>Nucl   </span></th>
+                    <th><span>Bless     </span></th>
+                    <th><span>Curse     </span></th>
+                    <th><span>Skl_1   </span></th>
+                    <th><span>Lvl_1   </span></th>
+                    <th><span>Skl_2   </span></th>
+                    <th><span>Lvl_2   </span></th>
+                    <th><span>Skl_3   </span></th>
+                    <th><span>Lvl_3   </span></th>
+                    <th><span>Skl_4   </span></th>
+                    <th><span>Lvl_4   </span></th>
+                    <th><span>Skl_5   </span></th>
+                    <th><span>Lvl_5   </span></th>
+                    <th><span>Skl_6   </span></th>
+                    <th><span>Lvl_6   </span></th>
+                    <th><span>Skl_7   </span></th>
+                    <th><span>Lvl_7   </span></th>
+                    <th><span>Skl_8   </span></th>
+                    <th><span>Lvl_8   </span></th>
                 </tr>
           </thead>
-          <tbody>
-                {% for row in results %}
-                <tr>
-                    {% for col in row %}
-                      <td>
-                       <span>{{col}}</span>
-                      </td>
-                      {% endfor %}
-                    </tr>
+        <tbody>
+
+          {% for row in results %}
+          <tr>
+              {% for col in row %}
+                <td>
+                 <span>{{col}}</span>
+                </td>
                 {% endfor %}
-           </tbody>
+              </tr>
+          {% endfor %}
+        </tbody>
         </table>
+      </div>
+       <script  type=text/javascript>  
+          $( function() {
+                var demonNames = ['Abaddon', 'Agathion', 'Alice', 'Ame-no-Uzume', 'Ananta', 'Andras', 'Angel', 'Anubis', 'Anzu', 'Apsaras', 'Ara Mitama', 'Arahabaki', 'Archangel', 'Ardha', 'Ariadne', 'Ariadne Picaro', 'Arsene', 'Asterius', 'Asterius Picaro', 'Asura-Ou', 'Atropos', 'Attis', 'Baal', 'Baphomet', 'Barong', 'Beelzebub', 'Belial', 'Belphegor', 'Berith', 'Bicorn', 'Bishamonten', 'Black Frost', 'Black Ooze', 'Black Rider', 'Bugs', 'Byakko', 'Cerberus', 'Chernobog', 'Chi You', 'Choronzon', 'Clotho', 'Crystal Skull', 'Cu Chulainn', 'Cybele', 'Daisoujou', 'Dakini', 'Decarabia', 'Dionysus', 'Dominion', 'Eligor', 'Emperors Amulet', 'Flauros', 'Forneus', 'Fortuna', 'Futsunushi', 'Fuu-Ki', 'Gabriel', 'Ganesha', 'Garuda', 'Genbu', 'Girimehkala', 'Hanuman', 'Hariti', 'Hecatoncheires', 'Hell Biker', 'High Pixie', 'Hope Diamond', 'Horus', 'Hua Po', 'Incubus', 'Inugami', 'Ippon-Datara', 'Ishtar', 'Isis', 'Izanagi', 'Izanagi Picaro', 'Jack Frost', 'Jack-o-Lantern', 'Jatayu', 'Jikokuten', 'Kaguya', 'Kaguya Picaro', 'Kaiwan', 'Kali', 'Kelpie', 'Kikuri-Hime', 'Kin-Ki', 'King Frost', 'Kodama', 'Koh-i-Noor', 'Kohryu', 'Koppa Tengu', 'Koropokguru', 'Koumokuten', 'Kumbhanda', 'Kurama Tengu', 'Kushi Mitama', 'Kushinada', 'Lachesis', 'Lakshmi', 'Lamia', 'Leanan Sidhe', 'Legion', 'Lilim', 'Lilith', 'Lucifer', 'Mada', 'Magatsu-Izanagi', 'Magatsu-Izanagi Picaro', 'Makami', 'Mandrake', 'Mara', 'Matador', 'Melchizedek', 'Messiah', 'Messiah Picaro', 'Metatron', 'Michael', 'Mithras', 'Mitra', 'Mokoi', 'Moloch', 'Mot', 'Mother Harlot', 'Mothman', 'Naga', 'Narcissus', 'Nebiros', 'Neko Shogun', 'Nekomata', 'Nigi Mitama', 'Norn', 'Nue', 'Obariyon', 'Oberon', 'Odin', 'Okuninushi', 'Ongyo-Ki', 'Oni', 'Onmoraki', 'Orlov', 'Orobas', 'Orpheus', 'Orpheus Picaro', 'Orthrus', 'Ose', 'Pale Rider', 'Parvati', 'Pazuzu', 'Phoenix', 'Pisaca', 'Pixie', 'Power', 'Principality', 'Queen Mab', 'Queens Necklace', 'Quetzalcoatl', 'Raja Naga', 'Rakshasa', 'Rangda', 'Raphael', 'Red Rider', 'Regent', 'Saki Mitama', 'Sandalphon', 'Sandman', 'Sarasvati', 'Satan', 'Satanael', 'Scathach', 'Seiryu', 'Setanta', 'Seth', 'Shiisaa', 'Shiki-Ouji', 'Shiva', 'Siegfried', 'Silky', 'Skadi', 'Slime', 'Sraosha', 'Stone of Scone', 'Succubus', 'Sudama', 'Sui-Ki', 'Surt', 'Suzaku', 'Take-Minakata', 'Thanatos', 'Thanatos Picaro', 'Thor', 'Thoth', 'Throne', 'Titania', 'Trumpeter', 'Tsukiyomi', 'Tsukiyomi Picaro', 'Unicorn', 'Uriel', 'Valkyrie', 'Vasuki', 'Vishnu', 'White Rider', 'Yaksini', 'Yamata-no-Orochi', 'Yatagarasu', 'Yoshitsune', 'Yurlungur', 'Zaou-Gongen', 'Zouchouten'];
+                $( ".demon" ).autocomplete({
+                  source: demonNames
+                });
+              } );
+      </script>
     </body>
 </html>
