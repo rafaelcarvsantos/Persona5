@@ -12,12 +12,16 @@ app.config["DEBUG"] = True
 
 
 results = []
+demons = []
 
 @app.route('/', methods=["GET", "POST"])
 def index():
     if request.method == "GET":
         return render_template("main_page.html", results=results)
-    for row in fusion.multipleFusion(request.form["demon1"],request.form["demon2"],request.form["demon3"],request.form["demon4"]):
+    result = request.form.items()
+    for i in result:
+    	demons.append(i[1])
+    for row in fusion.multipleFusion(demons):
     	results.append(row)
     return redirect(url_for('index'))
 app.run()

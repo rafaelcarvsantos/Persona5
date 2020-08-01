@@ -12,11 +12,12 @@ def simpleFusion(a,b):
 	return result
 
 
-def multipleFusion(*args):
+def multipleFusion(lista):
 	demons = []
 	results = []
-	for i in args:
-		demons.append(i)
+	for i in lista:
+		if i != '':
+			demons.append(i)
 	possibleFusions= list(itertools.combinations(demons, 2))
 	for i in possibleFusions:
 		demon = simpleFusion(i[0],i[1])
