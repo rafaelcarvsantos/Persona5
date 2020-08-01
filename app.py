@@ -11,17 +11,21 @@ app.config["DEBUG"] = True
 
 
 
-results = []
-demons = []
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/', methods=["GET"])
 def index():
-    if request.method == "GET":
-        return render_template("main_page.html", results=results)
-    result = request.form.items()
-    for i in result:
-    	demons.append(i[1])
-    for row in fusion.multipleFusion(demons):
-    	results.append(row)
-    return redirect(url_for('index'))
+
+	results = []
+	demons = []
+	result = request.args.values()
+	for i in result:
+		demons.append(i)
+
+	for row in fusion.multipleFusion(demons):
+		results.append(row)
+
+	return render_template("main_page.html", results=results)
+	
+
+
 app.run()
