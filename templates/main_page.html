@@ -9,6 +9,8 @@
     }
     </style>
 
+    <script type="text/javascript" src="{{ url_for('static', filename = 'autocomplete.js') }}"></script>
+
     <body>
 
         <div>
@@ -16,27 +18,16 @@
         </div>
 
         <div>
-            <form action="." method="GET">
+            <form action="." method="GET" autocomplete="off">
+            {% for i in range(boxes) %}
             <div class="form-group">
-                    <label for="demon1">Demon 1</label>
-                    <input class="form-control" id="demon1" name="demon1" placeholder="Demon 1">
-                  </div>
-                  <div class="form-group">
-                    <label for="demon2">Demon 2</label>
-                    <input class="form-control" id="demon2" name="demon2" placeholder="Demon 2">
-                  </div>
-                  <div class="form-group">
-                    <label for="demon3">Demon 2</label>
-                    <input class="form-control" id="demon3" name="demon3" placeholder="Demon 3">
-                  </div>
-                  <div class="form-group">
-                    <label for="demon4">Demon 2</label>
-                    <input class="form-control" id="demon4" name="demon4" placeholder="Demon 4">
-                  </div>
+                    <label for="demon">Demon {{i}}</label>
+                    <input class="form-control" id="autocomplete" name="demon{{i}}">
+            </div>
+            {% endfor %}
                   <button type="submit" class="btn btn-success">Fuse</button>
             </form>
         </div>
-        {{debug}}
         <table>
           <thead>
                 <tr>            

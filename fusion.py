@@ -16,7 +16,7 @@ def multipleFusion(lista):
 	demons = []
 	results = []
 	for i in lista:
-		if i != '':
+		if i != '' and i not in demons:
 			demons.append(i)
 	possibleFusions= list(itertools.combinations(demons, 2))
 	for i in possibleFusions:

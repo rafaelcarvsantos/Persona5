@@ -9,23 +9,22 @@ import fusion
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
-
+boxes = 4
 
 
 @app.route('/', methods=["GET"])
 def index():
-
-	results = []
 	demons = []
-	result = request.args.values()
-	for i in result:
+	fusionResults = []
+	demonList = request.args.values()
+
+	for i in demonList:
 		demons.append(i)
 
 	for row in fusion.multipleFusion(demons):
-		results.append(row)
+		fusionResults.append(row)
 
-	return render_template("main_page.html", results=results)
+	return render_template("main_page.html", boxes = boxes, results=fusionResults)
 	
-
 
 app.run()
