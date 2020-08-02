@@ -7,8 +7,11 @@ def simpleFusion(a,b):
 	result = []
 	exec = "exec dbo.fusao '"+a+"', '"+b+"'"
 	rows= cursor.execute(exec)
-	for i in rows:
-		result.append(i)
+	try:
+		for i in rows:
+			result.append(i)
+	except:
+		return
 	return result
 
 
@@ -21,7 +24,9 @@ def multipleFusion(lista):
 	possibleFusions= list(itertools.combinations(demons, 2))
 	for i in possibleFusions:
 		demon = simpleFusion(i[0],i[1])
-		results.append(demon[0])
+		if demon is not None:
+			results.append(demon[0])
 	return results
 
 
+print(simpleFusion('Abaddon','Agathion'))
