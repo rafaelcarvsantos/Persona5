@@ -24,9 +24,18 @@ def multipleFusion(lista):
 	possibleFusions= list(itertools.combinations(demons, 2))
 	for i in possibleFusions:
 		demon = simpleFusion(i[0],i[1])
-		if demon is not None:
+		if demon != [] and demon is not None:
+			print(demon)
 			results.append(demon[0])
 	return results
 
+def multipleFusionTwice(lista):
+	demons = lista
+	prev_results = multipleFusion(demons)
+	for i in prev_results:
+		demons.append(i[1])
+	return multipleFusion(demons)
 
-print(simpleFusion('Abaddon','Agathion'))
+
+	
+

@@ -18,8 +18,14 @@
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
       <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
       <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
-
-
+      <script>
+        function numSorter(a, b, c) {
+          
+          aa = $(a).text();
+          bb = $(b).text();
+          return (aa-bb)
+        }
+      </script>
       
     </head>
     <style>
@@ -65,49 +71,37 @@
               </div>
             </div>
             {% endfor %}
-                  <button type="submit" class="btn btn-success">Fuse</button>
+                  <button type="submit" name ="depth" class="btn btn-success" value = "1">Fuse once</button>
+
+                  <button type="submit" name ="depth" class="btn btn-success" value ="2">Fuse twice</button>
             </form>
         </div>
 
-        <table id="myTable" data-toggle="myTable" data-filter-control="true" data-sort-class="table-active"  data-sortable="true"  data-toolbar=".toolbar"  class="table table-striped table-bordered table-sm  w-auto small" cellspacing="0" width="100%" >
+        <table id="myTable" data-toggle="myTable" data-filter-control="true"  data-sortable="true" data-sorter="numSorter"  data-toolbar=".toolbar"  class="table table-striped table-bordered table-sm  w-auto small" cellspacing="0" width="100%" >
          
           <thead>
                 <tr>            
-                    <th  data-field="source" data-filter-control="input" data-sortable="true" ><span>Source      </span></th>
-                    <th  data-field="name" data-filter-control="input" data-sortable="true"><span>Name    </span></th>
-                    <th  data-field="arcana" data-filter-control="input" data-sortable="true"><span>Arcana    </span></th>
-                    <th  data-field="lvl" data-filter-control="input" data-sortable="true"><span>Lvl     </span></th>
-                    <th  data-field="str" data-filter-control="input" data-sortable="true" ><span>Str  </span></th>
-                    <th  data-field="mag" data-filter-control="input" data-sortable="true"><span>Mag     </span></th>
-                    <th  data-field="end" data-filter-control="input" data-sortable="true"><span>End </span></th>
-                    <th  data-field="agi" data-filter-control="input" data-sortable="true"><span>Agi   </span></th>
-                    <th  data-field="luck" data-filter-control="input" data-sortable="true"><span>Luck      </span></th>
-                    <th  data-field="phys" data-filter-control="input" data-sortable="true"><span>Phys  </span></th>
-                    <th  data-field="gun" data-filter-control="input" data-sortable="true"><span>Gun       </span></th>
-                    <th  data-field="fire" data-filter-control="input" data-sortable="true"><span>Fire      </span></th>
-                    <th   data-field="ice" data-filter-control="input" data-sortable="true"><span>Ice       </span></th>
-                    <th   data-field="elec" data-filter-control="input" data-sortable="true"><span>Elec  </span></th>
+                    <th  data-field="source" data-filter-control="input" data-sortable="true" data-sorter="numSorter" ><span>Source      </span></th>
+                    <th  data-field="name" data-filter-control="input" data-sortable="true" data-sorter="numSorter"><span>Name    </span></th>
+                    <th  data-field="arcana" data-filter-control="input" data-sortable="true" data-sorter="numSorter"><span>Arcana    </span></th>
+                    <th  data-field="lvl"  data-filter-control="input" data-sortable="true" data-sorter="numSorter" ><span>Lvl     </span></th>
+                    <th  data-field="str" data-filter-control="input" data-sortable="true" data-sorter="numSorter" ><span>Str  </span></th>
+                    <th  data-field="mag" data-filter-control="input" data-sortable="true" data-sorter="numSorter"><span>Mag     </span></th>
+                    <th  data-field="end" data-filter-control="input" data-sortable="true" data-sorter="numSorter"><span>End </span></th>
+                    <th  data-field="agi" data-filter-control="input" data-sortable="true" data-sorter="numSorter"><span>Agi   </span></th>
+                    <th  data-field="luck" data-filter-control="input" data-sortable="true" data-sorter="numSorter"><span>Luck      </span></th>
+                    <th  data-field="phys" data-filter-control="input" data-sortable="true" ><span>Phys  </span></th>
+                    <th  data-field="gun" data-filter-control="input" data-sortable="true" ><span>Gun       </span></th>
+                    <th  data-field="fire" data-filter-control="input" data-sortable="true" ><span>Fire      </span></th>
+                    <th   data-field="ice" data-filter-control="input" data-sortable="true" ><span>Ice       </span></th>
+                    <th   data-field="elec" data-filter-control="input" data-sortable="true" ><span>Elec  </span></th>
                     <th   data-field="wind" data-filter-control="input" data-sortable="true"><span>Wind      </span></th>
-                    <th   data-field="psych" data-filter-control="input" data-sortable="true"><span>Psych   </span></th>
-                    <th   data-field="nucl" data-filter-control="input" data-sortable="true"><span>Nucl   </span></th>
-                    <th   data-field="bless" data-filter-control="input" data-sortable="true"><span>Bless     </span></th>
-                    <th   data-field="curse" data-filter-control="input" data-sortable="true"><span>Curse     </span></th>
-                    <th   data-field="skl_1" data-filter-control="input" data-sortable="true"><span>Skl_1   </span></th>
-                    <th   data-field="lvl_1" data-filter-control="input" data-sortable="true"><span>Lvl_1   </span></th>
-                    <th   data-field="skl_2" data-filter-control="input" data-sortable="true"><span>Skl_2   </span></th>
-                    <th   data-field="lvl_2" data-filter-control="input" data-sortable="true"><span>Lvl_2   </span></th>
-                    <th   data-field="skl_3" data-filter-control="input" data-sortable="true"><span>Skl_3   </span></th>
-                    <th   data-field="lvl_3" data-filter-control="input" data-sortable="true"><span>Lvl_3   </span></th>
-                    <th   data-field="skl_4" data-filter-control="input" data-sortable="true"><span>Skl_4   </span></th>
-                    <th   data-field="lvl_4" data-filter-control="input" data-sortable="true"><span>Lvl_4   </span></th>
-                    <th   data-field="skl_5" data-filter-control="input" data-sortable="true"><span>Skl_5   </span></th>
-                    <th   data-field="lvl_5" data-filter-control="input" data-sortable="true"><span>Lvl_5   </span></th>
-                    <th   data-field="skl_6" data-filter-control="input" data-sortable="true"><span>Skl_6   </span></th>
-                    <th   data-field="lvl_6" data-filter-control="input" data-sortable="true"><span>Lvl_6   </span></th>
-                    <th   data-field="skl_7" data-filter-control="input" data-sortable="true"><span>Skl_7   </span></th>
-                    <th   data-field="lvl_7" data-filter-control="input" data-sortable="true"><span>Lvl_7   </span></th>
-                    <th  data-field="skl_8" data-filter-control="input" data-sortable="true"><span>Skl_8   </span></th>
-                    <th  data-field="lvl_8" data-filter-control="input" data-sortable="true" ><span>Lvl_8   </span></th>
+                    <th   data-field="psych" data-filter-control="input" data-sortable="true" ><span>Psych   </span></th>
+                    <th   data-field="nucl" data-filter-control="input" data-sortable="true" ><span>Nucl   </span></th>
+                    <th   data-field="bless" data-filter-control="input" data-sortable="true" ><span>Bless     </span></th>
+                    <th   data-field="curse" data-filter-control="input" data-sortable="true" ><span>Curse     </span></th>
+                    <th   data-field="skl_1" data-filter-control="input" data-sortable="true" ><span>Skills </span></th>
+
                 </tr>
           </thead>
         <tbody>
