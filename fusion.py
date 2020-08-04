@@ -37,5 +37,15 @@ def multipleFusionTwice(lista):
 	return multipleFusion(demons)
 
 
-	
+def specialFusion(lista):
+	result = []
+	listaString =" ".join(str(x) for x in lista)
+	exec = "exec dbo.fusaoEspecial '"+listaString+"'"
+	print(exec)
+	rows= cursor.execute(exec)
+	print(rows)
+	for i in rows:
+			result.append(i)
+	return result
+
 
